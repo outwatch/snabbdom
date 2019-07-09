@@ -18,10 +18,11 @@ function updateProps(oldVnode: VNode, vnode: VNode): void {
       delete (elm as any)[key];
     }
   }
+
   for (key in props) {
     cur = props[key];
-    old = oldProps[key];
-    if (old !== cur && (key !== 'value' || (elm as any)[key] !== cur)) {
+    old = (elm as any)[key];
+    if (old !== cur) {
       (elm as any)[key] = cur;
     }
   }
