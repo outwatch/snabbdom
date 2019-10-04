@@ -26,6 +26,15 @@ function updateAttrs(oldVnode: VNode, vnode: VNode): void {
   oldAttrs = oldAttrs || {};
   attrs = attrs || {};
 
+  // remove removed attributes
+  // use `in` operator since the previous `for` iteration uses it (.i.e. add even attributes with undefined value)
+  // the other option is to remove all attributes with value == undefined
+  for (key in oldAttrs) {
+    if (!(key in attrs)) {
+      elm.removeAttribute(key);
+    }
+  }
+
   // update modified attributes, add new attributes
   for (key in attrs) {
     const cur = attrs[key];
@@ -48,14 +57,6 @@ function updateAttrs(oldVnode: VNode, vnode: VNode): void {
           elm.setAttribute(key, cur);
         }
       }
-    }
-  }
-  // remove removed attributes
-  // use `in` operator since the previous `for` iteration uses it (.i.e. add even attributes with undefined value)
-  // the other option is to remove all attributes with value == undefined
-  for (key in oldAttrs) {
-    if (!(key in attrs)) {
-      elm.removeAttribute(key);
     }
   }
 }
