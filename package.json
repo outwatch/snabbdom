@@ -1,6 +1,6 @@
 {
-  "name": "snabbdom",
-  "version": "0.7.5",
+  "name": "outwatch-snabbdom",
+  "version": "0.7.6",
   "description": "A virtual DOM library with focus on simplicity, modularity, powerful features and performance.",
   "main": "snabbdom.js",
   "module": "es/snabbdom.js",
@@ -30,20 +30,9 @@
     "typescript": "^3.0.3",
     "xyz": "2.1.0"
   },
-  "scripts": {
-    "pretest": "npm run compile",
-    "test": "karma start",
-    "compile": "npm run compile-es && npm run compile-commonjs",
-    "compile-es": "tsc --outDir es --module es6 --moduleResolution node",
-    "compile-commonjs": "tsc --outDir ./",
-    "prepublish": "npm run compile",
-    "release-major": "xyz --repo git@github.com:paldepind/snabbdom.git --increment major",
-    "release-minor": "xyz --repo git@github.com:paldepind/snabbdom.git --increment minor",
-    "release-patch": "xyz --repo git@github.com:paldepind/snabbdom.git --increment patch"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paldepind/snabbdom.git"
+    "url": "git+https://github.com/outwatch/snabbdom.git"
   },
   "keywords": [
     "virtual",
@@ -55,9 +44,9 @@
   "author": "Simon Friis Vindum",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/paldepind/snabbdom/issues"
+    "url": "https://github.com/outwatch/snabbdom/issues"
   },
-  "homepage": "https://github.com/paldepind/snabbdom#readme",
+  "homepage": "https://github.com/outwatch/snabbdom#readme",
   "husky": {
     "hooks": {
       "pre-commit": "npm test"
