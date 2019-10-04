@@ -21,7 +21,7 @@ function updateProps(oldVnode: VNode, vnode: VNode): void {
 
   for (key in props) {
     cur = props[key];
-    old = (elm as any)[key];
+    old = (key === 'checked' || key === 'value' || key === 'selected') ? (elm as any)[key] : oldProps[key];
     if (old !== cur) {
       (elm as any)[key] = cur;
     }
