@@ -30,6 +30,14 @@
     "typescript": "^3.0.3",
     "xyz": "2.1.0"
   },
+  "scripts": {
+    "pretest": "npm run compile",
+    "test": "testem",
+    "compile": "npm run compile-es && npm run compile-commonjs",
+    "compile-es": "tsc --outDir es --module es6 --moduleResolution node",
+    "compile-commonjs": "tsc --outDir ./",
+    "prepublish": "npm run compile"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/outwatch/snabbdom.git"
