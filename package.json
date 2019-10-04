@@ -46,10 +46,5 @@
   "bugs": {
     "url": "https://github.com/outwatch/snabbdom/issues"
   },
-  "homepage": "https://github.com/outwatch/snabbdom#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test"
-    }
-  }
+  "homepage": "https://github.com/outwatch/snabbdom#readme"
 }
