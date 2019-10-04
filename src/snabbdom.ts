@@ -16,6 +16,10 @@ function sameVnode(vnode1: VNode, vnode2: VNode): boolean {
   return vnode1.key === vnode2.key && vnode1.sel === vnode2.sel;
 }
 
+function isVnode(vnode: any): vnode is VNode {
+  return vnode.sel !== undefined;
+}
+
 type KeyToIndexMap = {[key: string]: number};
 
 type ArraysOf<T> = {
@@ -54,6 +58,10 @@ export function init(modules: Array<Partial<Module>>, domApi?: DOMAPI) {
         (cbs[hooks[i]] as Array<any>).push(hook);
       }
     }
+  }
+
+  function emptyNodeAt(elm: Element) {
+    return vnode(api.tagName(elm).toLowerCase(), {}, [], undefined, elm);
   }
 
   function createRmCb(childElm: Node, listeners: number) {
@@ -328,6 +336,10 @@ export function init(modules: Array<Partial<Module>>, domApi?: DOMAPI) {
     let i: number, elm: Node, parent: Node;
     const insertedVnodeQueue: VNodeQueue = [];
     for (i = 0; i < cbs.pre.length; ++i) cbs.pre[i]();
+
+    if (!isVnode(oldVnode)) {
+      oldVnode = emptyNodeAt(oldVnode);
+    }
 
     if (sameVnode(oldVnode, vnode)) {
       patchVnode(oldVnode, vnode, insertedVnodeQueue);
