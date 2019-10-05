@@ -2,7 +2,6 @@ import {Hooks} from './hooks';
 import {VNodeStyle} from './modules/style'
 import {On} from './modules/eventlisteners'
 import {Attrs} from './modules/attributes'
-import {Classes} from './modules/class'
 import {Props} from './modules/props'
 
 export type Key = string | number;
@@ -19,7 +18,6 @@ export interface VNode {
 export interface VNodeData {
   props?: Props;
   attrs?: Attrs;
-  class?: Classes;
   style?: VNodeStyle;
   on?: On;
   hook?: Hooks;
