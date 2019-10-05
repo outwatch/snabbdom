@@ -294,10 +294,9 @@ export function init(modules: Array<Partial<Module>>, domApi?: DOMAPI) {
   }
 
   function patchVnode(oldVnode: VNode, vnode: VNode, insertedVnodeQueue: VNodeQueue) {
-    let i: any, hook: any;
-    if (isDef(i = vnode.data) && isDef(hook = i.hook) && isDef(i = hook.prepatch)) {
-      i(oldVnode, vnode);
-    }
+    let i: any, hook: any, oldHook: any;
+    if (isDef(i = oldVnode.data) && isDef(oldHook = i.hook) && isDef(i = oldHook.oldprepatch)) i(oldVnode, vnode);
+    if (isDef(i = vnode.data) && isDef(hook = i.hook) && isDef(i = hook.prepatch)) i(oldVnode, vnode);
     const elm = vnode.elm = (oldVnode.elm as Node);
     let oldCh = oldVnode.children;
     let ch = vnode.children;
@@ -324,9 +323,8 @@ export function init(modules: Array<Partial<Module>>, domApi?: DOMAPI) {
       }
       api.setTextContent(elm, vnode.text as string);
     }
-    if (isDef(hook) && isDef(i = hook.postpatch)) {
-      i(oldVnode, vnode);
-    }
+    if (isDef(oldHook) && isDef(i = oldHook.oldpostpatch)) i(oldVnode, vnode);
+    if (isDef(hook) && isDef(i = hook.postpatch)) i(oldVnode, vnode);
   }
 
   return function patch(oldVnode: VNode | Element, vnode: VNode): VNode {
