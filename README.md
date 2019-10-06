@@ -1,5 +1,7 @@
 <img src="logo.png" width="356px">
 
+**This is a fork of snabbdom intended for use with OutWatch**
+
 A virtual DOM library with focus on simplicity, modularity, powerful features
 and performance.
 
