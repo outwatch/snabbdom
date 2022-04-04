@@ -1,4 +1,4 @@
-import { VNode } from "./vnode";
+import {VNode} from "./vnode";
 
 export type PreHook = () => any;
 export type InitHook = (vNode: VNode) => any;
@@ -17,10 +17,9 @@ export interface Hooks {
   create?: CreateHook;
   insert?: InsertHook;
   prepatch?: PrePatchHook;
-  oldprepatch?: PrePatchHook;
   update?: UpdateHook;
+  oldupdate?: UpdateHook;
   postpatch?: PostPatchHook;
-  oldpostpatch?: PostPatchHook;
   destroy?: DestroyHook;
   remove?: RemoveHook;
   post?: PostHook;

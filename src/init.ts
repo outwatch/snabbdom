@@ -425,9 +425,7 @@ export function init(
     vnode: VNode,
     insertedVnodeQueue: VNodeQueue
   ) {
-    const oldHook = oldVnode.data?.hook;
     const hook = vnode.data?.hook;
-    oldHook?.oldprepatch?.(oldVnode, vnode);
     hook?.prepatch?.(oldVnode, vnode);
     const elm = (vnode.elm = oldVnode.elm)!;
     const oldCh = oldVnode.children as VNode[];
@@ -436,6 +434,8 @@ export function init(
     if (vnode.data !== undefined) {
       for (let i = 0; i < cbs.update.length; ++i)
         cbs.update[i](oldVnode, vnode);
+
+      oldVnode.data?.hook?.oldupdate?.(oldVnode, vnode);
       vnode.data.hook?.update?.(oldVnode, vnode);
     }
     if (isUndef(vnode.text)) {
@@ -455,7 +455,6 @@ export function init(
       }
       api.setTextContent(elm, vnode.text!);
     }
-    oldHook?.oldpostpatch?.(oldVnode, vnode);
     hook?.postpatch?.(oldVnode, vnode);
   }
 
