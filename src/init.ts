@@ -454,8 +454,8 @@ export function init(
       }
       api.setTextContent(elm, vnode.text!);
     }
-    hook?.postpatch?.(oldVnode, vnode);
     oldVnode.data?.hook?.oldpostpatch?.(oldVnode, vnode);
+    hook?.postpatch?.(oldVnode, vnode);
   }
 
   return function patch(
