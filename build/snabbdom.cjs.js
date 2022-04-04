@@ -445,8 +445,7 @@ function init(modules, domApi, options) {
         if (vnode.data !== undefined) {
             for (let i = 0; i < cbs.update.length; ++i)
                 cbs.update[i](oldVnode, vnode);
-            (_e = (_d = (_c = oldVnode.data) === null || _c === void 0 ? void 0 : _c.hook) === null || _d === void 0 ? void 0 : _d.oldupdate) === null || _e === void 0 ? void 0 : _e.call(_d, oldVnode, vnode);
-            (_g = (_f = vnode.data.hook) === null || _f === void 0 ? void 0 : _f.update) === null || _g === void 0 ? void 0 : _g.call(_f, oldVnode, vnode);
+            (_d = (_c = vnode.data.hook) === null || _c === void 0 ? void 0 : _c.update) === null || _d === void 0 ? void 0 : _d.call(_c, oldVnode, vnode);
         }
         if (isUndef(vnode.text)) {
             if (isDef(oldCh) && isDef(ch)) {
@@ -471,7 +470,8 @@ function init(modules, domApi, options) {
             }
             api.setTextContent(elm, vnode.text);
         }
-        (_h = hook === null || hook === void 0 ? void 0 : hook.postpatch) === null || _h === void 0 ? void 0 : _h.call(hook, oldVnode, vnode);
+        (_e = hook === null || hook === void 0 ? void 0 : hook.postpatch) === null || _e === void 0 ? void 0 : _e.call(hook, oldVnode, vnode);
+        (_h = (_g = (_f = oldVnode.data) === null || _f === void 0 ? void 0 : _f.hook) === null || _g === void 0 ? void 0 : _g.oldpostpatch) === null || _h === void 0 ? void 0 : _h.call(_g, oldVnode, vnode);
     }
     return function patch(oldVnode, vnode) {
         let i, elm, parent;
