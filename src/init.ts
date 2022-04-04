@@ -435,7 +435,6 @@ export function init(
       for (let i = 0; i < cbs.update.length; ++i)
         cbs.update[i](oldVnode, vnode);
 
-      oldVnode.data?.hook?.oldupdate?.(oldVnode, vnode);
       vnode.data.hook?.update?.(oldVnode, vnode);
     }
     if (isUndef(vnode.text)) {
@@ -456,6 +455,7 @@ export function init(
       api.setTextContent(elm, vnode.text!);
     }
     hook?.postpatch?.(oldVnode, vnode);
+    oldVnode.data?.hook?.oldpostpatch?.(oldVnode, vnode);
   }
 
   return function patch(

@@ -18,7 +18,7 @@ export interface Hooks {
   insert?: InsertHook;
   prepatch?: PrePatchHook;
   update?: UpdateHook;
-  oldupdate?: UpdateHook;
+  oldpostpatch?: PostPatchHook;
   postpatch?: PostPatchHook;
   destroy?: DestroyHook;
   remove?: RemoveHook;
