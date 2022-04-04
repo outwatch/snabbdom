@@ -385,8 +385,8 @@ export function init(modules, domApi, options) {
             }
             api.setTextContent(elm, vnode.text);
         }
-        (_e = hook === null || hook === void 0 ? void 0 : hook.postpatch) === null || _e === void 0 ? void 0 : _e.call(hook, oldVnode, vnode);
-        (_h = (_g = (_f = oldVnode.data) === null || _f === void 0 ? void 0 : _f.hook) === null || _g === void 0 ? void 0 : _g.oldpostpatch) === null || _h === void 0 ? void 0 : _h.call(_g, oldVnode, vnode);
+        (_g = (_f = (_e = oldVnode.data) === null || _e === void 0 ? void 0 : _e.hook) === null || _f === void 0 ? void 0 : _f.oldpostpatch) === null || _g === void 0 ? void 0 : _g.call(_f, oldVnode, vnode);
+        (_h = hook === null || hook === void 0 ? void 0 : hook.postpatch) === null || _h === void 0 ? void 0 : _h.call(hook, oldVnode, vnode);
     }
     return function patch(oldVnode, vnode) {
         let i, elm, parent;
