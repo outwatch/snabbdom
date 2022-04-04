@@ -8,7 +8,7 @@ export type VNodeStyle = Record<string, string> & {
 
 // Bindig `requestAnimationFrame` like this fixes a bug in IE/Edge. See #360 and #409.
 const raf =
-  (typeof window !== "undefined" &&
+  (typeof window !== "undefined" && window.requestAnimationFrame !== undefined &&
     window.requestAnimationFrame.bind(window)) ||
   setTimeout;
 const nextFrame = function (fn: any) {
