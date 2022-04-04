@@ -700,7 +700,7 @@ function updateProps(oldVnode, vnode) {
 const propsModule = { create: updateProps, update: updateProps };
 
 // Bindig `requestAnimationFrame` like this fixes a bug in IE/Edge. See #360 and #409.
-const raf = (typeof window !== "undefined" &&
+const raf = (typeof window !== "undefined" && window.requestAnimationFrame !== undefined &&
     window.requestAnimationFrame.bind(window)) ||
     setTimeout;
 const nextFrame = function (fn) {
