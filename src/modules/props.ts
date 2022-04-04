@@ -1,18 +1,20 @@
-import {VNode, VNodeData} from '../vnode';
-import {Module} from './module';
+import {VNode, VNodeData} from "../vnode";
+import {Module} from "./module";
 
 export type Props = Record<string, any>;
 
 function updateProps(oldVnode: VNode, vnode: VNode): void {
-  var key: string, cur: any, old: any, elm = vnode.elm,
-      oldProps = (oldVnode.data as VNodeData).props,
-      props = (vnode.data as VNodeData).props;
+  let key: string;
+  let cur: any;
+  let old: any;
+  const elm = vnode.elm;
+  let oldProps = (oldVnode.data as VNodeData).props;
+  let props = (vnode.data as VNodeData).props;
 
   if (!oldProps && !props) return;
   if (oldProps === props) return;
   oldProps = oldProps || {};
   props = props || {};
-
   for (key in oldProps) {
     if (!(key in props)) {
       delete (elm as any)[key];
@@ -28,5 +30,4 @@ function updateProps(oldVnode: VNode, vnode: VNode): void {
   }
 }
 
-export const propsModule = {create: updateProps, update: updateProps} as Module;
-export default propsModule;
+export const propsModule: Module = {create: updateProps, update: updateProps};
