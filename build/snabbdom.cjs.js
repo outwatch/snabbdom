@@ -150,12 +150,13 @@ function init(modules, domApi, options) {
         }
     }
     function emptyNodeAt(elm) {
-        const id = elm.id ? "#" + elm.id : "";
+        // const id = elm.id ? "#" + elm.id : "";
         // elm.className doesn't return a string when elm is an SVG element inside a shadowRoot.
         // https://stackoverflow.com/questions/29454340/detecting-classname-of-svganimatedstring
-        const classes = elm.getAttribute("class");
-        const c = classes ? "." + classes.split(" ").join(".") : "";
-        return vnode(api.tagName(elm).toLowerCase() + id + c, {}, [], undefined, elm);
+        // const classes = elm.getAttribute("class");
+        // const c = classes ? "." + classes.split(" ").join(".") : "";
+        return vnode(api.tagName(elm).toLowerCase(), // + id + c,
+        {}, [], undefined, elm);
     }
     function emptyDocumentFragmentAt(frag) {
         return vnode(undefined, {}, [], undefined, frag);
