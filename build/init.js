@@ -10,10 +10,7 @@ function isDef(s) {
 const emptyNode = vnode("", {}, [], undefined, undefined);
 function sameVnode(vnode1, vnode2) {
     var _a, _b;
-    const isSameKey = vnode1.key === vnode2.key;
-    const isSameIs = ((_a = vnode1.data) === null || _a === void 0 ? void 0 : _a.is) === ((_b = vnode2.data) === null || _b === void 0 ? void 0 : _b.is);
-    const isSameSel = vnode1.sel === vnode2.sel;
-    return isSameSel && isSameKey && isSameIs;
+    return vnode1.sel === vnode2.sel && vnode1.key === vnode2.key && ((_a = vnode1.data) === null || _a === void 0 ? void 0 : _a.is) === ((_b = vnode2.data) === null || _b === void 0 ? void 0 : _b.is);
 }
 /**
  * @todo Remove this function when the document fragment is considered stable.
@@ -65,13 +62,7 @@ export function init(modules, domApi, options) {
         }
     }
     function emptyNodeAt(elm) {
-        // const id = elm.id ? "#" + elm.id : "";
-        // elm.className doesn't return a string when elm is an SVG element inside a shadowRoot.
-        // https://stackoverflow.com/questions/29454340/detecting-classname-of-svganimatedstring
-        // const classes = elm.getAttribute("class");
-        // const c = classes ? "." + classes.split(" ").join(".") : "";
-        return vnode(api.tagName(elm).toLowerCase(), // + id + c,
-        {}, [], undefined, elm);
+        return vnode(api.tagName(elm).toLowerCase(), {}, [], undefined, elm);
     }
     function emptyDocumentFragmentAt(frag) {
         return vnode(undefined, {}, [], undefined, frag);
