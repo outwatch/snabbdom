@@ -17,11 +17,7 @@ type VNodeQueue = VNode[];
 const emptyNode = vnode("", {}, [], undefined, undefined);
 
 function sameVnode(vnode1: VNode, vnode2: VNode): boolean {
-  const isSameKey = vnode1.key === vnode2.key;
-  const isSameIs = vnode1.data?.is === vnode2.data?.is;
-  const isSameSel = vnode1.sel === vnode2.sel;
-
-  return isSameSel && isSameKey && isSameIs;
+  return vnode1.sel === vnode2.sel && vnode1.key === vnode2.key && vnode1.data?.is === vnode2.data?.is;
 }
 
 /**
@@ -110,15 +106,8 @@ export function init(
   }
 
   function emptyNodeAt(elm: Element) {
-    // const id = elm.id ? "#" + elm.id : "";
-
-    // elm.className doesn't return a string when elm is an SVG element inside a shadowRoot.
-    // https://stackoverflow.com/questions/29454340/detecting-classname-of-svganimatedstring
-    // const classes = elm.getAttribute("class");
-
-    // const c = classes ? "." + classes.split(" ").join(".") : "";
     return vnode(
-      api.tagName(elm).toLowerCase(), // + id + c,
+      api.tagName(elm).toLowerCase(),
       {},
       [],
       undefined,
